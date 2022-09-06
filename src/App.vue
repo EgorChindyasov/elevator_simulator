@@ -1,27 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div class="container">
+        <elevator-shaft 
+            :floorsNumbers="floorsNumberArr"
+        ></elevator-shaft>
+        <floor-markup 
+            :floorsNumbers="floorsNumberArr">
+        </floor-markup>
+    </div>
 </template>
-
+  
 <script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
-
+import {ref, computed, defineComponent} from 'vue'
+import ElevatorShaft from './components/ElevatorShaft.vue'
+import FloorMarkup from './components/FloorMarkup.vue'
+import Buttons from './components/Buttons.vue'
+  
 export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
-</script>
+    components: {ElevatorShaft, FloorMarkup, Buttons},
+    setup() {
+        const floorsNumber = ref(5)
+        const floorsNumberArr = computed(() => {
+            return Array
+                .from(
+                    {length: floorsNumber.value}, 
+                    (v, k) => k + 1
+                )
+                .reverse()
+        })
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+        return {
+            floorsNumberArr
+        }
+    }
+})
+</script>
+  
+<style scoped lang="scss">
+    .container {
+        margin: 30px;
+        position: relative;
+    }
 </style>
+  
