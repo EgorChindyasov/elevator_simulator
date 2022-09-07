@@ -1,7 +1,7 @@
 <template>
     <div class="elevatorShaftContainer">
         <div class="elevatorShaft"></div>
-        <buttons :floorsNumbers="floorsNumbers"></buttons>
+        <buttons></buttons>
     </div>
 </template>
   
@@ -11,7 +11,6 @@ import Buttons from './Buttons.vue'
   
 export default defineComponent({
     components: {Buttons},
-    props: ['floorsNumbers']
 })
 </script>
   

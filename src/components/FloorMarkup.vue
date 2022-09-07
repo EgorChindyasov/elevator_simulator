@@ -1,19 +1,28 @@
 <template>
     <div>
         <div 
-            v-for="count in floorsNumbers" 
+            v-for="count in floorsNumber" 
             :key="count"
             class="floor"
-            :style="{width: '100%', height: `${500 / floorsNumbers.length}px`}"
-        >{{count}}</div>
+            :style="{width: '100%', height: `${500 / floorsNumber}px`}"
+        >
+            {{floorsNumber - count + 1}}
+        </div>
     </div>
 </template>
   
 <script lang="ts">
-import {ref, defineComponent} from 'vue'
+import {defineComponent} from 'vue'
+import {useStore} from 'vuex'
   
 export default defineComponent({
-    props: ['floorsNumbers']
+    setup() {
+        const store = useStore()
+
+        return {
+            floorsNumber: store.getters.getFloorsNumber
+        }
+    }
 })
 </script>
   
