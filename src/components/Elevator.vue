@@ -2,7 +2,11 @@
     <div 
         ref="elevatorRef"
         class="elevator"
-    ></div>
+    >
+        <div class="tabloidContainer">
+            <tabloid></tabloid>
+        </div>
+    </div>
 </template>
   
 <script lang="ts">
@@ -13,8 +17,10 @@ import {
     defineComponent
 } from 'vue'
 import {useStore} from 'vuex'
+import Tabloid from './Tabloid.vue'
   
 export default defineComponent({
+    components: {Tabloid},
     setup() {
         const store = useStore()
 
@@ -72,5 +78,10 @@ export default defineComponent({
         bottom: 0px;
         background-color: lemonchiffon;
         opacity: 1;
+
+        .tabloidContainer {
+            display: flex;
+            justify-content: center;
+        }
     }
 </style>
