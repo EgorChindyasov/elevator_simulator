@@ -1,6 +1,7 @@
 <template>
     <div class="buttonsGroup">
         <div 
+            class="buttonContainer"
             v-for="count in floorsNumber" 
             :key="count"
             :style="{width: '100%', height: `${500 / floorsNumber}px`}"
@@ -36,8 +37,13 @@ export default defineComponent({
 <style scoped lang="scss">
     .buttonsGroup {
         height: 500px;
-        width: 200px;
-        border: 2px solid black;
+        width: 100px;
         box-sizing: border-box;
+
+        .buttonContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 </style>
