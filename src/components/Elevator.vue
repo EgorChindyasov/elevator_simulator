@@ -18,11 +18,8 @@ export default defineComponent({
     setup() {
         const store = useStore()
 
-        const oldFloor = ref(1)
-        const targetFloor = ref(store.getters.getCallFloor)
         const elevatorRef = ref<HTMLDivElement | null>(null)
-
-        const callFloor = computed(() => store.getters.getCallFloor)
+        const callFloor = computed(() => store.getters.getNextCallFloor)
 
         watch(callFloor, (newValue, oldValue) => {
             if (elevatorRef.value) {
@@ -31,11 +28,13 @@ export default defineComponent({
                 elevatorRef.value.style.bottom = `${100 * (newValue - 1)}px`
                 elevatorRef.value.style.transition = `${animationDuration}s linear`
             
-                targetFloor.value = newValue
-                oldFloor.value = oldValue
+                store.commit('changeIsMoved', true)
 
                 setTimeout(() => {
                     if (elevatorRef.value) {
+                        store.commit('changeElevatorPosition', newValue)
+                        store.commit('changeIsMoved', false)
+                        
                         elevatorRef.value.animate(
                             [
                                 {opacity: 1},
@@ -47,14 +46,17 @@ export default defineComponent({
                                 iterations: 3
                             }
                         )
+
+                        setTimeout(() => {
+                            store.commit('changeElevatorPosition', newValue)
+                            store.commit('removeFromQueueCalls')
+                        }, 3000)
                     }
                 }, animationDuration * 1000)
             }
         })
 
         return {
-            oldFloor,
-            targetFloor,
             elevatorRef
         }
     }
