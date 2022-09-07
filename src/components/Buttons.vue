@@ -23,7 +23,7 @@ export default defineComponent({
     setup() {
         const store = useStore()
         const countLog = (count: number) => {
-            console.log(count)
+            store.commit('changeCallFloor', count)
         }
 
         return {
