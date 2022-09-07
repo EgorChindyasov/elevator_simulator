@@ -21,10 +21,10 @@ export default defineComponent({
         flex-direction: row;
         
         .elevatorShaft {
-        height: 500px;
-        width: 200px;
-        border: 2px solid black;
-        box-sizing: border-box;
-    }
+            height: 500px;
+            width: 200px;
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
     }
 </style>
