@@ -7,7 +7,7 @@
             :style="{width: '100%', height: `${500 / floorsNumber}px`}"
         >
             <button 
-                @click="countLog(floorsNumber - count + 1)"
+                @click="callElevator(floorsNumber - count + 1)"
             >
                 Вызвать
             </button>
@@ -22,13 +22,13 @@ import {useStore} from 'vuex'
 export default defineComponent({
     setup() {
         const store = useStore()
-        const countLog = (count: number) => {
+        const callElevator = (count: number) => {
             store.commit('changeCallFloor', count)
         }
 
         return {
             floorsNumber: store.getters.getFloorsNumber,
-            countLog
+            callElevator
         }
     }
 })
