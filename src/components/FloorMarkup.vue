@@ -32,6 +32,7 @@ export default defineComponent({
         width: 100%;
         display: flex;
         justify-content: end;
+        align-items: center;
         border-top: $floorBorder;
         border-bottom: $floorBorder;
         box-sizing: border-box;
