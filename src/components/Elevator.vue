@@ -54,7 +54,6 @@ export default defineComponent({
                         )
 
                         setTimeout(() => {
-                            store.commit('changeElevatorPosition', newValue)
                             store.commit('removeFromQueueCalls')
                         }, 3000)
                     }
