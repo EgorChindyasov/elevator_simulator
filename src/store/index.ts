@@ -22,7 +22,7 @@ export default createStore({
         },
         getQueueCalls: (state) => {
             return state.queueCalls
-        },
+        }
     },
     mutations: {
         changeElevatorPosition: (state, newElevatorPosition: number) => {

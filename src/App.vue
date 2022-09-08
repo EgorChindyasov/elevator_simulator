@@ -23,12 +23,12 @@ export default defineComponent({
 
             store.commit(
                 'changeElevatorPosition', 
-                Number(storage.getItem('elevatorPosition')) ? Number(storage.getItem('lastElevatorPosition')) : 1
+                storage.getItem('elevatorPosition') ? Number(storage.getItem('elevatorPosition')) : 1
             )
             store.commit(
                 'changeIsMoved', 
                 // @ts-ignore
-                eval(storage.getItem('isMoved')) ? eval(storage.getItem('isMoved')) : false
+                storage.getItem('isMoved') ? eval(storage.getItem('isMoved')) : false
             )
             store.commit(
                 'setQueueCalls', 
