@@ -15,12 +15,10 @@ export default defineComponent({
     setup() {
         const store = useStore()
 
-        const targetFloor = ref(store.state.elevatorPositon)
+        const targetFloor = ref(store.getters.getElevatorPositon)
 
         const nextCallFloorComputed = computed(() => store.getters.getNextCallFloor)
         const elevatorPositonComputed = computed(() => store.getters.getElevatorPositon)
-
-        console.log(nextCallFloorComputed.value, elevatorPositonComputed.value)
 
         watch([nextCallFloorComputed, elevatorPositonComputed], () => {
             const elevatorPositon = elevatorPositonComputed.value
