@@ -19,6 +19,7 @@ import {
     defineComponent
 } from 'vue'
 import {useStore} from 'vuex'
+import {DURATION} from '@/constants/intex'
   
 export default defineComponent({
     props: ['count', 'floorsNumber'],
@@ -51,7 +52,7 @@ export default defineComponent({
                             {opacity: 1, borderColor: 'red'}
                         ], 
                         {
-                            duration: 1000,
+                            duration: DURATION,
                             iterations: 3
                         }
                     )

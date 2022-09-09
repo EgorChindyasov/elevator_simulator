@@ -18,6 +18,7 @@ import {
 } from 'vue'
 import {useStore} from 'vuex'
 import Tabloid from './Tabloid.vue'
+import {DURATION} from '@/constants/intex'
   
 export default defineComponent({
     components: {Tabloid},
@@ -48,16 +49,16 @@ export default defineComponent({
                                 {opacity: 1}
                             ], 
                             {
-                                duration: 1000,
+                                duration: DURATION,
                                 iterations: 3
                             }
                         )
 
                         setTimeout(() => {
                             store.commit('removeFromQueueCalls')
-                        }, 3000)
+                        }, 3 * DURATION)
                     }
-                }, animationDuration * 1000)
+                }, animationDuration * DURATION)
             }
         })
 
